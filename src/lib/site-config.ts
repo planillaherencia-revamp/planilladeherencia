@@ -4,6 +4,7 @@ export const siteConfig = {
   description:
     "Preparamos y radicamos su Planilla de Caudal Relicto ante el Departamento de Hacienda de Puerto Rico — con acompañamiento personal en cada paso.",
   contactEmail: "planillaherencia@gmail.com",
+  contactPhone: "787-553-3290",
   specialist: {
     name: "Marisol Rodríguez",
     number: "1020612",

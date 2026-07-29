@@ -52,13 +52,21 @@ const steps = [
   },
 ]
 
-const documents = [
-  "Certificado de defunción del causante",
+const documentsAlways = [
+  "Certificado de defunción",
   "Declaratoria de herederos o testamento",
-  "Escrituras y recibos del CRIM de las propiedades",
-  "Estados de cuentas bancarias a la fecha del fallecimiento",
-  "Títulos de vehículos y pólizas de seguro",
-  "Evidencia de deudas y gastos funerarios",
+  "Certificación de valores contributivos del CRIM (sin deuda)",
+  "Autorización firmada (Modelo SC 2745) con copia de identificación con foto vigente",
+]
+
+const documentsConditional = [
+  "Número de catastro y escritura (o descripción registral de Karibe) de cada propiedad inmueble",
+  "Estados bancarios más recientes de todas las cuentas",
+  "Estados de cuentas de inversión, valores u otros",
+  "Licencias de vehículos de motor, embarcaciones y similares",
+  "Acta de apertura de caja de seguridad, si el causante tenía una",
+  "Pólizas de seguro de vida, incapacidad u otras",
+  "Informe de tasación a la fecha del fallecimiento, si el causante falleció antes del 1 de enero de 2018",
 ]
 
 export default function ProcesoPage() {
@@ -119,14 +127,18 @@ export default function ProcesoPage() {
               <Card className="border-border/70">
                 <CardContent className="p-6">
                   <h3 className="font-heading text-base font-semibold">
-                    Documentos que suelen hacer falta
+                    Documentos que hacen falta
                   </h3>
                   <p className="mt-1.5 text-xs text-muted-foreground">
                     No los necesita todos para empezar — le indicamos cuáles
                     aplican a su caso.
                   </p>
-                  <ul className="mt-4 space-y-2">
-                    {documents.map((doc) => (
+
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
+                    Siempre
+                  </p>
+                  <ul className="mt-2.5 space-y-2">
+                    {documentsAlways.map((doc) => (
                       <li
                         key={doc}
                         className="flex items-start gap-2 text-sm text-muted-foreground"
@@ -136,6 +148,27 @@ export default function ProcesoPage() {
                       </li>
                     ))}
                   </ul>
+
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
+                    Según los bienes del causante
+                  </p>
+                  <ul className="mt-2.5 space-y-2">
+                    {documentsConditional.map((doc) => (
+                      <li
+                        key={doc}
+                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-border" />
+                        {doc}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="mt-5 rounded-lg bg-secondary/60 p-3 text-xs text-muted-foreground">
+                    Las certificaciones (CRIM, Registro Demográfico,
+                    tribunales) tienen vigencia limitada. Si el proceso se
+                    dilata, hay que solicitarlas de nuevo antes de radicar.
+                  </p>
                 </CardContent>
               </Card>
             </Reveal>
@@ -156,7 +189,7 @@ export default function ProcesoPage() {
                     ¿Listo para comenzar?
                   </h2>
                   <p className="mt-2 text-muted-foreground">
-                    Recuerde: la planilla debe rendirse dentro de los nueve
+                    Recuerde: la planilla debe rendirse dentro de los doce (12)
                     meses siguientes al fallecimiento del causante. Entre más
                     pronto empecemos, mejor.
                   </p>

@@ -37,12 +37,22 @@ const faqs = [
   {
     question: "¿Cuánto tiempo tengo para rendir la planilla?",
     answer:
-      "La Planilla de Contribución sobre Caudal Relicto debe rendirse antes de que transcurran nueve meses desde la fecha del fallecimiento del causante.",
+      "Para causantes fallecidos a partir del 1 de enero de 2018, la Planilla Informativa de Caudal Relicto debe rendirse dentro de los doce (12) meses siguientes a la fecha del fallecimiento. Para fallecimientos anteriores a esa fecha aplican formularios y plazos distintos — escríbanos y le confirmamos cuál aplica a su caso.",
   },
   {
     question: "¿Qué pasa si ya se rindió una planilla y necesito corregirla?",
     answer:
-      "Se puede enmendar. Se completa una nueva planilla marcando el encasillado de «Planilla Enmendada», acompañada de un Comprobante de Rentas Internas de $25 y una carta explicando las razones de la enmienda. Si se aumenta el valor de una propiedad, se requiere el informe de tasación y un acta aclaratoria; si se añade una propiedad inmueble, se requiere certificación del CRIM. Si la enmienda añade bienes por más del 25% del valor originalmente informado, se pagan derechos adicionales equivalentes al 10% de la diferencia entre ambos montos.",
+      "Se puede enmendar. Se completa una nueva planilla marcando el encasillado de «Planilla Enmendada», acompañada de una carta explicando las razones de la enmienda y de la documentación de respaldo que corresponda. Si se aumenta el valor de una propiedad suele requerirse un informe de tasación y un acta aclaratoria; si se añade una propiedad inmueble, la certificación del CRIM. Dependiendo de cuánto aumente el caudal informado, pueden aplicar derechos adicionales. Escríbanos con los detalles de su caso y le confirmamos exactamente qué aplica y cuánto costaría.",
+  },
+  {
+    question: "¿Qué es el Modelo SC 2745 y por qué tengo que firmarlo?",
+    answer:
+      "El Modelo SC 2745 es el «Poder y Declaración de Representación» del Departamento de Hacienda. Es el documento con el que usted me autoriza a tramitar su planilla ante Hacienda en su nombre: presentar documentos, firmar acuerdos y comparecer ante el Departamento sobre este asunto. Se firma junto con copia de una identificación con foto vigente, y usted decide por cuántos meses estará vigente (hasta un máximo de un año).",
+  },
+  {
+    question: "¿Dónde se radica la planilla?",
+    answer:
+      "La Planilla Informativa de Caudal Relicto se tramita a través de SURI, el Sistema Unificado de Rentas Internas del Departamento de Hacienda. Nosotros nos encargamos de todo el trámite en SURI — usted no necesita crear cuenta ni manejar el sistema.",
   },
   {
     question: "¿Qué bienes hay que reportar?",

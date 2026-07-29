@@ -20,8 +20,9 @@ import { siteConfig } from "@/lib/site-config"
 const trustStrip = [
   {
     icon: CalendarClock,
-    stat: "9 meses",
-    label: "es el plazo de ley para rendir la planilla desde el fallecimiento",
+    stat: "12 meses",
+    label:
+      "es el plazo para rendir la planilla desde el fallecimiento del causante",
   },
   {
     icon: ShieldCheck,
@@ -240,9 +241,11 @@ export default function HomePage() {
                 </strong>{" "}
                 la planilla debe rendirse dentro de los{" "}
                 <strong className="font-medium text-foreground">
-                  nueve meses
+                  doce (12) meses
                 </strong>{" "}
-                siguientes al fallecimiento del causante.
+                siguientes al fallecimiento, para causantes fallecidos a partir
+                del 1 de enero de 2018. Para fallecimientos anteriores a esa
+                fecha aplican formularios y plazos distintos.
               </p>
             </div>
             <Link

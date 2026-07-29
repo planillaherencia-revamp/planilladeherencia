@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Clock, Mail, MapPin, ShieldCheck } from "lucide-react"
+import { Clock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Section, SectionHeading } from "@/components/marketing/section"
 import { Reveal } from "@/components/marketing/reveal"
@@ -18,6 +18,12 @@ const details = [
     label: "Correo electrónico",
     value: siteConfig.contactEmail,
     href: `mailto:${siteConfig.contactEmail}`,
+  },
+  {
+    icon: Phone,
+    label: "Teléfono",
+    value: siteConfig.contactPhone,
+    href: `tel:+1${siteConfig.contactPhone.replace(/-/g, "")}`,
   },
   {
     icon: MapPin,

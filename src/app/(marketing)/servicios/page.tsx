@@ -44,7 +44,7 @@ const services = [
     points: [
       "Aplica a residentes de Puerto Rico al momento del fallecimiento",
       "También aplica a no residentes con propiedad localizada en Puerto Rico",
-      "Debe rendirse dentro de los nueve meses siguientes al fallecimiento",
+      "Se rinde dentro de los doce (12) meses siguientes al fallecimiento (causantes fallecidos desde el 1 de enero de 2018)",
       "La firma el administrador, heredero, viudo(a), albacea o representante legal",
     ],
   },

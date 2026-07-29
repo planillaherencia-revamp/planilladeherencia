@@ -45,6 +45,14 @@ export function Footer() {
                     {siteConfig.contactEmail}
                   </a>
                 </li>
+                <li>
+                  <a
+                    href={`tel:+1${siteConfig.contactPhone.replace(/-/g, "")}`}
+                    className="hover:text-foreground"
+                  >
+                    {siteConfig.contactPhone}
+                  </a>
+                </li>
                 <li>Puerto Rico</li>
               </ul>
             </div>
