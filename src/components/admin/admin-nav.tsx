@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { KeyRound, LogOut } from "lucide-react"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { logout } from "@/app/(admin)/admin/actions"
 
@@ -37,12 +37,21 @@ export function AdminNav() {
             ))}
           </nav>
         </div>
-        <form action={logout}>
-          <Button type="submit" variant="ghost" size="sm">
-            <LogOut className="h-4 w-4" />
-            Salir
-          </Button>
-        </form>
+        <div className="flex items-center gap-1">
+          <Link
+            href="/admin/actualizar-contrasena"
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
+          >
+            <KeyRound className="h-4 w-4" />
+            Cambiar contraseña
+          </Link>
+          <form action={logout}>
+            <Button type="submit" variant="ghost" size="sm">
+              <LogOut className="h-4 w-4" />
+              Salir
+            </Button>
+          </form>
+        </div>
       </div>
     </header>
   )
