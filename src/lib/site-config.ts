@@ -2,11 +2,12 @@ export const siteConfig = {
   name: "Caudal Relicto PR",
   tagline: "Su Relevo de Herencia, sin complicaciones",
   description:
-    "Preparamos y radicamos su Planilla de Caudal Relicto ante el Departamento de Hacienda de Puerto Rico — de forma rápida, cómoda y segura.",
+    "Preparamos y radicamos su Planilla de Caudal Relicto ante el Departamento de Hacienda de Puerto Rico — con acompañamiento personal en cada paso.",
   contactEmail: "planillaherencia@gmail.com",
   specialist: {
     name: "Marisol Rodríguez",
     number: "1020612",
+    role: "Especialista en Planillas de Caudal Relicto",
   },
   pricing: {
     baseFee: 300,

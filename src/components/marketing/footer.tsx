@@ -18,7 +18,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div>
               <h3 className="text-sm font-semibold">Navegación</h3>
               <ul className="mt-3 space-y-2">
@@ -40,7 +40,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`mailto:${siteConfig.contactEmail}`}
-                    className="hover:text-foreground"
+                    className="break-all hover:text-foreground"
                   >
                     {siteConfig.contactEmail}
                   </a>
