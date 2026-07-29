@@ -153,12 +153,54 @@ Esto **reemplaza** el diseño de 8 tablas tipadas (`asset_real_estate`,
   hace que el cuestionario sea «condicionado»: la lista de documentos que se le
   pide al cliente se calcula, no se pregunta.
 
+## Quién llena el cuestionario (decidido 2026-07-29)
+
+**El cliente lo llena** — esa es la vía principal, por su enlace privado
+(`/c/[accessToken]/cuestionario`). Marisol puede llenar el mismo expediente
+desde `/admin/casos/[caseId]/cuestionario` cuando el cliente no puede o no
+quiere. Ambos caminos escriben en las mismas tablas, así que un caso empezado
+por el cliente lo puede continuar ella.
+
+Esto implica **dos presentaciones de los mismos campos**:
+
+- **Cliente:** asistente paso a paso, una sección a la vez, lenguaje llano,
+  guardado automático. Optimizado para alguien que lo hace una sola vez en su
+  vida, probablemente desde el celular, en un momento difícil.
+- **Marisol:** formulario denso, todas las secciones a la vista, navegable con
+  teclado. Optimizado para alguien que lo hace decenas de veces.
+
+Mismo modelo de datos, distinta UI. No intentar servir a ambos con la misma
+pantalla.
+
+## OCR de documentos — solo del lado admin
+
+Extracción automática de datos desde documentos escaneados usando la API de
+Claude (visión + salidas estructuradas). **Es una herramienta de Marisol, no del
+cliente:** el cliente nunca la ve ni la dispara, y no hay procesamiento
+automático al subir. Ella abre un documento en su panel, pide extraer, revisa
+lo propuesto y confirma.
+
+- **Nunca guardar automáticamente.** La extracción produce *sugerencias* que se
+  muestran junto al documento fuente; el valor solo entra al expediente cuando
+  se confirma. Un error de OCR en la fecha de fallecimiento cambiaría el plazo
+  legal del caso.
+- **Modelo:** `claude-opus-5` vía `@anthropic-ai/sdk`, con salidas estructuradas
+  (`output_config.format` + esquema Zod por tipo de documento) para garantizar
+  JSON válido.
+- **Costo aproximado:** $0.25–0.50 por caso de 8–10 páginas escaneadas.
+- **Mayor impacto primero:** el certificado de defunción llena casi toda la
+  Sección II y toda la Sección III (padres) — unos 20 campos.
+- **Autorización:** al ser acción de Marisol y no del cliente, vive en su
+  acuerdo de servicio, no en la app. Pendiente que ella confirme que su contrato
+  cubre el uso de herramientas de terceros.
+
 ## Pendiente de confirmar con Marisol
 
-- Si el cuestionario en línea debe permitir que **el cliente** lo llene, o si
-  siempre lo llena ella con la información que el cliente le provee.
 - Si hace falta capturar deudas y gastos deducibles (gastos funerarios,
   hipotecas) como partidas — el PDF no tiene sección aparte para ellos, pero la
   planilla SC 2800 sí los contempla.
 - Cómo se numeran las partidas cuando hay más bienes de los que caben en la
   tabla (el PDF dice «anexe páginas adicionales»).
+- Si las cifras de planillas enmendadas siguen vigentes ($25 de comprobante,
+  regla 25% / 10%) — vienen del WordPress viejo, que ya resultó estar
+  desactualizado en el plazo de rendición.
