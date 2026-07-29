@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Section, SectionHeading } from "@/components/marketing/section"
+import { Reveal } from "@/components/marketing/reveal"
 
 export const metadata: Metadata = {
   title: "Cómo funciona",
@@ -63,22 +64,24 @@ export default function ProcesoPage() {
 
       <Section className="pt-0 sm:pt-0">
         <div className="grid gap-6 lg:grid-cols-2">
-          {steps.map((step) => (
-            <Card key={step.number} className="border-border/70">
-              <CardContent className="flex gap-4 p-6">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-lg font-semibold text-primary-foreground">
-                  {step.number}
-                </span>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          {steps.map((step, i) => (
+            <Reveal key={step.number} delay={(i % 2) * 0.08}>
+              <Card className="h-full border-border/70 transition-shadow duration-300 hover:shadow-md">
+                <CardContent className="flex gap-4 p-6">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-lg font-semibold text-primary-foreground">
+                    {step.number}
+                  </span>
+                  <div>
+                    <h3 className="font-heading text-lg font-semibold">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </Section>

@@ -3,6 +3,8 @@ import { ArrowRight, FileCheck2, ShieldCheck, Clock, HeartHandshake } from "luci
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Section, SectionHeading } from "@/components/marketing/section"
+import { Reveal } from "@/components/marketing/reveal"
+import { HeroVisual } from "@/components/marketing/hero-visual"
 import { siteConfig } from "@/lib/site-config"
 
 const trustPoints = [
@@ -58,14 +60,19 @@ const steps = [
 export default function HomePage() {
   return (
     <>
-      <Section className="pt-16 sm:pt-24">
+      <Section className="relative overflow-hidden pt-16 sm:pt-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,var(--accent)_0%,transparent_70%)] opacity-[0.15]"
+        />
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Caudal Relicto &middot; Puerto Rico
             </p>
             <h1 className="mt-3 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Su Relevo de Herencia, sin complicaciones
+              Su Relevo de Herencia,{" "}
+              <span className="text-primary">sin complicaciones</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-muted-foreground">
               {siteConfig.description} Le acompañamos en cada paso, con
@@ -93,80 +100,52 @@ export default function HomePage() {
             </dl>
           </div>
 
-          <Card className="border-border/70 bg-card shadow-sm">
-            <CardContent className="p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                Costo estimado
-              </p>
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="font-heading text-4xl font-semibold text-foreground">
-                  ${siteConfig.pricing.baseFee}
-                </span>
-                <span className="text-muted-foreground">base, 1 propiedad incluida</span>
-              </div>
-              <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-                <li className="flex justify-between border-b border-border/60 pb-3">
-                  <span>Cada propiedad inmueble adicional</span>
-                  <span className="font-medium text-foreground">
-                    +${siteConfig.pricing.additionalPropertyFee}
-                  </span>
-                </li>
-                <li className="flex justify-between border-b border-border/60 pb-3">
-                  <span>Radicación ante Hacienda</span>
-                  <span className="font-medium text-foreground">
-                    +${siteConfig.pricing.haciendaFilingFee}
-                  </span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Depósito para comenzar</span>
-                  <span className="font-medium text-foreground">
-                    {siteConfig.pricing.depositPercent}%
-                  </span>
-                </li>
-              </ul>
-              <p className="mt-6 text-xs text-muted-foreground">
-                El otro {100 - siteConfig.pricing.depositPercent}% se paga al completar su caso. Cotización
-                exacta luego de conocer los detalles de su caso.
-              </p>
-            </CardContent>
-          </Card>
+          <HeroVisual />
         </div>
       </Section>
 
       <Section className="bg-secondary/40">
-        <SectionHeading
-          eyebrow="Servicios"
-          title="Todo lo que necesita para su Relevo de Herencia"
-          description="Nos encargamos de la parte técnica y el papeleo, para que usted y su familia puedan enfocarse en lo importante."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Servicios"
+            title="Todo lo que necesita para su Relevo de Herencia"
+            description="Nos encargamos de la parte técnica y el papeleo, para que usted y su familia puedan enfocarse en lo importante."
+          />
+        </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, title, description }) => (
-            <Card key={title} className="border-border/70">
-              <CardContent className="p-6">
-                <Icon className="h-8 w-8 text-primary" />
-                <h3 className="mt-4 font-heading text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{description}</p>
-              </CardContent>
-            </Card>
+          {services.map(({ icon: Icon, title, description }, i) => (
+            <Reveal key={title} delay={i * 0.08}>
+              <Card className="h-full border-border/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <CardContent className="p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-heading text-lg font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{description}</p>
+                </CardContent>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </Section>
 
       <Section>
-        <SectionHeading
-          eyebrow="Proceso"
-          title="Así de sencillo trabajamos su caso"
-          center
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Proceso"
+            title="Así de sencillo trabajamos su caso"
+            center
+          />
+        </Reveal>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
-            <div key={step.number} className="text-center sm:text-left">
+          {steps.map((step, i) => (
+            <Reveal key={step.number} delay={i * 0.08} className="text-center sm:text-left">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-heading text-lg font-semibold text-primary-foreground">
                 {step.number}
               </span>
               <h3 className="mt-4 font-heading text-lg font-semibold">{step.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <div className="mt-10 text-center">
@@ -177,22 +156,65 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <Section className="bg-secondary/40">
+        <Reveal>
+          <Card className="overflow-hidden border-border/70">
+            <CardContent className="grid gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Costo estimado
+                </p>
+                <h2 className="mt-2 font-heading text-2xl font-semibold sm:text-3xl">
+                  Un precio claro, desde el inicio
+                </h2>
+                <p className="mt-3 max-w-md text-muted-foreground">
+                  Le enviamos una cotización exacta luego de conocer los
+                  detalles de su caso — sin cargos escondidos.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-6 lg:gap-10">
+                <div>
+                  <p className="font-heading text-3xl font-semibold text-foreground">
+                    ${siteConfig.pricing.baseFee}
+                  </p>
+                  <p className="text-sm text-muted-foreground">base, 1 propiedad</p>
+                </div>
+                <div>
+                  <p className="font-heading text-3xl font-semibold text-foreground">
+                    +${siteConfig.pricing.additionalPropertyFee}
+                  </p>
+                  <p className="text-sm text-muted-foreground">c/u propiedad extra</p>
+                </div>
+                <div>
+                  <p className="font-heading text-3xl font-semibold text-foreground">
+                    {siteConfig.pricing.depositPercent}%
+                  </p>
+                  <p className="text-sm text-muted-foreground">depósito inicial</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Reveal>
+      </Section>
+
       <Section className="bg-primary text-primary-foreground">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-            ¿Necesita información?
-          </h2>
-          <p className="max-w-xl text-primary-foreground/85">
-            Escríbanos y le explicamos qué necesita para comenzar su Planilla
-            de Caudal Relicto, sin compromiso.
-          </p>
-          <Link
-            href="/contacto"
-            className={buttonVariants({ size: "lg", variant: "secondary" })}
-          >
-            Pregúntenos cómo
-          </Link>
-        </div>
+        <Reveal>
+          <div className="flex flex-col items-center gap-6 text-center">
+            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+              ¿Necesita información?
+            </h2>
+            <p className="max-w-xl text-primary-foreground/85">
+              Escríbanos y le explicamos qué necesita para comenzar su Planilla
+              de Caudal Relicto, sin compromiso.
+            </p>
+            <Link
+              href="/contacto"
+              className={buttonVariants({ size: "lg", variant: "secondary" })}
+            >
+              Pregúntenos cómo
+            </Link>
+          </div>
+        </Reveal>
       </Section>
     </>
   )

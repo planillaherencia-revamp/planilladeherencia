@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Section, SectionHeading } from "@/components/marketing/section"
+import { Reveal } from "@/components/marketing/reveal"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
@@ -69,25 +70,27 @@ export default function ServiciosPage() {
 
       <Section className="pt-0 sm:pt-0">
         <div className="grid gap-6">
-          {services.map((service) => (
-            <Card key={service.title} className="border-border/70">
-              <CardContent className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.2fr_1fr]">
-                <div>
-                  <h3 className="font-heading text-xl font-semibold">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-muted-foreground">{service.description}</p>
-                </div>
-                <ul className="space-y-2 self-center">
-                  {service.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-muted-foreground">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          {services.map((service, i) => (
+            <Reveal key={service.title} delay={i * 0.08}>
+              <Card className="border-border/70 transition-shadow duration-300 hover:shadow-md">
+                <CardContent className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.2fr_1fr]">
+                  <div>
+                    <h3 className="font-heading text-xl font-semibold">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-muted-foreground">{service.description}</p>
+                  </div>
+                  <ul className="space-y-2 self-center">
+                    {service.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-sm">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span className="text-muted-foreground">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -99,14 +102,13 @@ export default function ServiciosPage() {
           description="Nuestro cuestionario se adapta a los bienes del difunto — si no hay vehículos ni cuentas de inversión, no perderá tiempo respondiendo esas preguntas."
         />
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          {assetCategories.map((category) => (
-            <div
-              key={category}
-              className="flex items-start gap-2 rounded-lg border border-border/70 bg-card p-4 text-sm"
-            >
-              <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span>{category}</span>
-            </div>
+          {assetCategories.map((category, i) => (
+            <Reveal key={category} delay={i * 0.04}>
+              <div className="flex items-start gap-2 rounded-lg border border-border/70 bg-card p-4 text-sm">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>{category}</span>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Section>
