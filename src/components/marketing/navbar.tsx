@@ -44,7 +44,7 @@ export function Navbar() {
 
         <div className="hidden md:block">
           <Link href="/contacto" className={buttonVariants({ size: "sm" })}>
-            Pregúntenos cómo
+            Comience su caso
           </Link>
         </div>
 
@@ -74,7 +74,7 @@ export function Navbar() {
                 href="/contacto"
                 className={buttonVariants({ size: "sm", className: "mt-3" })}
               >
-                Pregúntenos cómo
+                Comience su caso
               </Link>
             </nav>
           </SheetContent>

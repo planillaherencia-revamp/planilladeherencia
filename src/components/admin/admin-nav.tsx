@@ -10,6 +10,7 @@ import { logout } from "@/app/(admin)/admin/actions"
 const links = [
   { href: "/admin", label: "Panel" },
   { href: "/admin/casos", label: "Casos" },
+  { href: "/admin/referidos", label: "Referidos" },
 ]
 
 export function AdminNav() {

@@ -64,9 +64,14 @@ export function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos
             reservados.
           </p>
-          <p>
-            Especialista #{siteConfig.specialist.number} &middot;{" "}
-            {siteConfig.specialist.name}
+          <p className="flex items-center gap-3">
+            <span>
+              Especialista #{siteConfig.specialist.number} &middot;{" "}
+              {siteConfig.specialist.name}
+            </span>
+            <Link href="/admin/login" className="text-muted-foreground/60 hover:text-foreground">
+              Acceso
+            </Link>
           </p>
         </div>
       </div>

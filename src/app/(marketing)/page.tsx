@@ -131,7 +131,7 @@ export default function HomePage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/contacto" className={buttonVariants({ size: "lg" })}>
-              Pregúntenos cómo
+              Comience su caso
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
             <Link
@@ -465,7 +465,7 @@ export default function HomePage() {
               href="/contacto"
               className={buttonVariants({ size: "lg", variant: "secondary" })}
             >
-              Pregúntenos cómo
+              Comience su caso
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
