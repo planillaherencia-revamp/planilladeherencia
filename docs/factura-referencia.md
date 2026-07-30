@@ -60,15 +60,23 @@ Texto libre al final de la factura:
 
 ```
 Puede enviar su pago mediante cheque a: 3819 Avenida Isla Verde apto. 14A, Carolina PR 00979
-ATH Móvil: 787-553-3290
+ATH Móvil: 787-553-3290 (mismo teléfono del negocio)
+Venmo: [pendiente el @usuario — es la cuenta personal de Marisol, no del negocio]
 ```
 
 **Implicación:** el plan original de pagos (Stripe Checkout + registro
-manual) no mencionaba **ATH Móvil** explícitamente como método visible en la
-factura — hay que añadirlo como opción de pago manual con su propio label
-(`method: 'manual_ath_movil'` ya estaba contemplado en el esquema, pero la
-factura debe *mostrarle al cliente* el número de ATH Móvil y la dirección
-para cheque, no solo ofrecer un botón de Stripe).
+manual) no mencionaba **ATH Móvil ni Venmo** explícitamente como métodos
+visibles en la factura — hay que añadirlos como opciones de pago manual con
+su propio label cada uno (`manual_ath_movil`, `manual_venmo`, ya cabe en el
+enum `manual_other` del esquema original pero conviene su propio valor para
+reportes). La factura debe *mostrarle al cliente* el número de ATH Móvil, el
+@usuario de Venmo, y la dirección para cheque — no solo ofrecer un botón de
+Stripe.
+
+**Nota:** Venmo es la cuenta **personal** de Marisol, no la del negocio —
+confirmar si eso es intencional (¿prefiere no exponer más su cuenta personal
+en un documento de negocio?) antes de publicarlo en facturas generadas por la
+app.
 
 ## Pendiente de confirmar con Marisol
 
