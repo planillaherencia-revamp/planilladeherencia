@@ -188,7 +188,7 @@ export default function ServiciosPage() {
                   </li>
                 </ul>
                 <Link
-                  href="/contacto"
+                  href="/comenzar"
                   className={buttonVariants({ className: "mt-7" })}
                 >
                   Solicitar cotización

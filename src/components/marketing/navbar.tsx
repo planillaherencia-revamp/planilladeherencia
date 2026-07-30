@@ -43,7 +43,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <Link href="/contacto" className={buttonVariants({ size: "sm" })}>
+          <Link href="/comenzar" className={buttonVariants({ size: "sm" })}>
             Comience su caso
           </Link>
         </div>
@@ -71,7 +71,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/contacto"
+                href="/comenzar"
                 className={buttonVariants({ size: "sm", className: "mt-3" })}
               >
                 Comience su caso

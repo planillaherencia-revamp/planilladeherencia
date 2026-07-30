@@ -40,7 +40,9 @@ export default async function CaseDetailPage({
   const [{ data: caseRecord }, { data: invoices }] = await Promise.all([
     supabase
       .from("cases")
-      .select("id, status, access_token, filled_by, questionnaire_status, created_at, clients(full_name, email, phone)")
+      .select(
+        "id, status, access_token, filled_by, questionnaire_status, notes, created_at, clients(full_name, email, phone), decedents(full_name, date_of_death)"
+      )
       .eq("id", caseId)
       .single(),
     supabase
@@ -55,6 +57,9 @@ export default async function CaseDetailPage({
   const client = Array.isArray(caseRecord.clients)
     ? caseRecord.clients[0]
     : caseRecord.clients
+  const decedent = Array.isArray(caseRecord.decedents)
+    ? caseRecord.decedents[0]
+    : caseRecord.decedents
 
   const publicUrl = `${process.env.NEXT_PUBLIC_APP_URL}/c/${caseRecord.access_token}`
 
@@ -100,7 +105,36 @@ export default async function CaseDetailPage({
             </p>
           </CardContent>
         </Card>
+        {decedent?.full_name && (
+          <Card className="border-border/70">
+            <CardContent className="p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Causante
+              </p>
+              <p className="mt-2 text-sm font-medium">{decedent.full_name}</p>
+              {decedent.date_of_death && (
+                <p className="text-sm text-muted-foreground">
+                  Falleció el{" "}
+                  {new Date(decedent.date_of_death).toLocaleDateString("es-PR")}
+                </p>
+              )}
+            </CardContent>
+          </Card>
+        )}
       </div>
+
+      {caseRecord.notes && (
+        <Card className="mt-4 border-border/70">
+          <CardContent className="p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Notas del cliente
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {caseRecord.notes}
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {caseRecord.filled_by === "client" && (
         <Card className="mt-4 border-border/70">
@@ -162,13 +196,6 @@ export default async function CaseDetailPage({
           ))
         )}
       </div>
-
-      <Card className="mt-6 border-dashed border-border">
-        <CardContent className="p-5 text-sm text-muted-foreground">
-          El cuestionario completo (bienes, herederos, testamento, documentos)
-          se construye en el siguiente paso.
-        </CardContent>
-      </Card>
     </div>
   )
 }

@@ -21,7 +21,6 @@ export const siteConfig = {
 export const navLinks = [
   { href: "/servicios", label: "Servicios" },
   { href: "/proceso", label: "Cómo funciona" },
-  { href: "/abogados", label: "Para abogados" },
   { href: "/sobre-mi", label: "Sobre mí" },
   { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
   { href: "/contacto", label: "Contacto" },

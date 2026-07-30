@@ -130,7 +130,7 @@ export default function HomePage() {
             acompañamiento personal en cada paso.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/contacto" className={buttonVariants({ size: "lg" })}>
+            <Link href="/comenzar" className={buttonVariants({ size: "lg" })}>
               Comience su caso
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
@@ -455,14 +455,14 @@ export default function HomePage() {
         <Reveal>
           <div className="flex flex-col items-center gap-6 text-center">
             <h2 className="max-w-2xl font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-              ¿Tiene dudas sobre el caso de su familia?
+              ¿Lista para resolver el caso de su familia?
             </h2>
             <p className="max-w-xl text-primary-foreground/85">
-              Escríbanos sin compromiso. Le explicamos qué necesita para
-              comenzar y cuánto tomaría su caso en particular.
+              Regístrese sin compromiso. Le explicamos qué necesita y cuánto
+              tomaría su caso en particular.
             </p>
             <Link
-              href="/contacto"
+              href="/comenzar"
               className={buttonVariants({ size: "lg", variant: "secondary" })}
             >
               Comience su caso

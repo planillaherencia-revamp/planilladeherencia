@@ -111,7 +111,7 @@ export default function SobreMiPage() {
               </p>
             </div>
             <Link
-              href="/contacto"
+              href="/comenzar"
               className={buttonVariants({ className: "mt-7", size: "lg" })}
             >
               Conversemos sobre su caso
@@ -173,10 +173,10 @@ export default function SobreMiPage() {
                   compromiso.
                 </p>
                 <Link
-                  href="/contacto"
+                  href="/comenzar"
                   className={buttonVariants({ className: "mt-6" })}
                 >
-                  Escribirme
+                  Comenzar mi caso
                   <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>

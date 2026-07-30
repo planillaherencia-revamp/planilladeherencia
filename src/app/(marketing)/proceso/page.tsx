@@ -196,7 +196,7 @@ export default function ProcesoPage() {
                 </div>
               </div>
               <Link
-                href="/contacto"
+                href="/comenzar"
                 className={buttonVariants({ size: "lg", className: "shrink-0" })}
               >
                 Pregúntenos cómo
